@@ -9,15 +9,15 @@ spec:
   strategy:
     type: Rolling
   triggers:
-  - type: ImageChange
-    imageChangeParams:
-      automatic: true
-      containerNames:
-      - nodejs-example
-      from:
-        kind: ImageStreamTag
-        name: {{ print .Values.name ":latest" | quote }}
-  - type: ConfigChange
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - nodejs-example
+        from:
+          kind: ImageStreamTag
+          name: {{ print .Values.name ":latest" | quote }}
+    - type: ConfigChange
   replicas: 1
   selector:
     name: {{ .Values.name | quote }}
@@ -28,22 +28,22 @@ spec:
         name: {{ .Values.name | quote }}
     spec:
       containers:
-      - name: nodejs-example
-        image: " "
-        ports:
-        - containerPort: 8080
-        readinessProbe:
-          timeoutSeconds: 3
-          initialDelaySeconds: 3
-          httpGet:
-            path: "/"
-            port: 8080
-        livenessProbe:
-          timeoutSeconds: 3
-          initialDelaySeconds: 30
-          httpGet:
-            path: "/"
-            port: 8080
-        resources:
-          limits:
-            memory: {{ .Values.memory_limit | quote }}
+        - name: nodejs-example
+          image: " "
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            timeoutSeconds: 3
+            initialDelaySeconds: 3
+            httpGet:
+              path: "/"
+              port: 8080
+          livenessProbe:
+            timeoutSeconds: 3
+            initialDelaySeconds: 30
+            httpGet:
+              path: "/"
+              port: 8080
+          resources:
+            limits:
+              memory: {{ .Values.memory_limit | quote }}

@@ -6,8 +6,8 @@ metadata:
     description: Exposes and load balances the application pods
 spec:
   ports:
-  - name: web
-    port: 8080
-    targetPort: 8080
+    - name: web
+      port: 8080
+      targetPort: 8080
   selector:
     name: {{ .Values.name | quote }}

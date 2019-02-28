@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
   <title>Welcome to Rehearsal Booking</title>
 
 
@@ -247,10 +248,13 @@
 <body>
 
 <section class='container'>
-  <hgroup>
-    <h1>Welcome to Rehearsal Booking</h1>
-  </hgroup>
+  <h1>Welcome to Rehearsal Booking</h1>
 
+  <% if (locals.test) { %>
+  <div class="alert alert-warning">
+    This is a test!
+  </div>
+  <% } %>
 
   <div class="row">
     <section class='col-xs-12 col-sm-6 col-md-6'>
