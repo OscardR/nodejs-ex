@@ -141,7 +141,7 @@
           }
         ],
         "postCommit": {
-          "script": "npm test"
+          "script": "yarn install && npm test"
         }
       }
     },
